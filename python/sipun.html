@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Walking Human</title>
+
+<style>
+body{
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#e8f5ff;
+}
+
+canvas{
+    background:#fff;
+    border:2px solid #333;
+    border-radius:10px;
+}
+</style>
+
+</head>
+<body>
+
+<canvas id="canvas" width="600" height="400"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let x = 80;
+let t = 0;
+
+function drawHuman(x, y, t){
+
+    // Head
+    ctx.beginPath();
+    ctx.arc(x, y-90, 20, 0, Math.PI*2);
+    ctx.stroke();
+
+    // Eyes
+    ctx.beginPath();
+    ctx.arc(x-6, y-95, 2, 0, Math.PI*2);
+    ctx.arc(x+6, y-95, 2, 0, Math.PI*2);
+    ctx.fill();
+
+    // Smile
+    ctx.beginPath();
+    ctx.arc(x, y-87, 7, 0, Math.PI);
+    ctx.stroke();
+
+    // Body
+    ctx.beginPath();
+    ctx.moveTo(x, y-70);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    // Walking animation
+    let arm = Math.sin(t) * 20;
+    let leg = Math.sin(t) * 25;
+
+    // Left Arm
+    ctx.beginPath();
+    ctx.moveTo(x, y-50);
+    ctx.lineTo(x-30, y-20+arm);
+    ctx.stroke();
+
+    // Right Arm
+    ctx.beginPath();
+    ctx.moveTo(x, y-50);
+    ctx.lineTo(x+30, y-20-arm);
+    ctx.stroke();
+
+    // Left Leg
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x-20, y+45+leg);
+    ctx.stroke();
+
+    // Right Leg
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+20, y+45-leg);
+    ctx.stroke();
+}
+
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // Ground
+    ctx.beginPath();
+    ctx.moveTo(0,300);
+    ctx.lineTo(canvas.width,300);
+    ctx.stroke();
+
+    drawHuman(x,230,t);
+
+    x += 1.5;
+    t += 0.1;
+
+    if(x > canvas.width + 30){
+        x = -30;
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: white;
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #020617;
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #38bdf8;
+        }
+
+        /* Home */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .home-content h1 {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .home-content h1 span {
+            color: #38bdf8;
+        }
+
+        .home-content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .home-content p {
+            max-width: 600px;
+            margin: auto;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #020617;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #7dd3fc;
+        }
+
+        /* Common Section */
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 35px;
+            margin-bottom: 50px;
+            color: #38bdf8;
+        }
+
+        /* About */
+        .about {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            color: #cbd5e1;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skill {
+            background: #1e293b;
+            padding: 20px 35px;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+            background: #334155;
+        }
+
+        /* Projects */
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .project {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+        }
+
+        .project h3 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Education */
+        .education {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .education-box {
+            background: #1e293b;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+        }
+
+        .education-box h3 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+        }
+
+        .education-box p {
+            color: #cbd5e1;
+        }
+
+        /* Contact */
+        .contact {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .contact textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        .contact button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #38bdf8;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            color: #94a3b8;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 13px;
+            }
+
+            .home-content h1 {
+                font-size: 40px;
+            }
+
+            .home-content h2 {
+                font-size: 22px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="logo">MyPortfolio</div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <!-- Home -->
+    <section id="home">
+        <div class="home-content">
+
+            <h1>Hello, I'm <span>Surya Prakash Dash</span></h1>
+
+            <h2>Web Developer & Programmer</h2>
+
+            <p>
+                I am a passionate developer interested in web development,
+                programming, IoT and building creative projects.
+            </p>
+
+            <a href="#contact" class="btn">Contact Me</a>
+
+        </div>
+    </section>
+
+
+    <!-- About -->
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about">
+            <p>
+                Hello! I am a passionate computer science student and
+                aspiring software developer. I enjoy learning new
+                technologies and creating useful projects using
+                programming and web development.
+            </p>
+
+            <br>
+
+            <p>
+                My goal is to become a skilled software developer and
+                continuously improve my technical and problem-solving skills.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+    <section id="skills">
+
+        <h2 class="section-title">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">Python</div>
+            <div class="skill">Java</div>
+            <div class="skill">C/C++</div>
+            <div class="skill">SQL</div>
+            <div class="skill">IoT</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Projects -->
+    <section id="projects">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <div class="projects-container">
+
+            <div class="project">
+                <h3>Portfolio Website</h3>
+                <p>
+                    A responsive personal portfolio website created
+                    using HTML, CSS and JavaScript.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Weather App</h3>
+                <p>
+                    A weather application that displays weather
+                    information using an API.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Hostel Management System</h3>
+                <p>
+                    A web-based system for managing hostel students,
+                    rooms and records.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>IoT Temperature Monitor</h3>
+                <p>
+                    An Arduino-based project that measures and
+                    displays temperature.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Education -->
+    <section id="education">
+
+        <h2 class="section-title">Education</h2>
+
+        <div class="education">
+
+            <div class="education-box">
+                <h3>Bachelor's Degree</h3>
+                <p>Computer Science / Engineering</p>
+                <p>Nalanda Institute Of Technology| 2024 - Present</p>
+            </div>
+
+            <div class="education-box">
+                <h3>Higher Secondary</h3>
+                <p>Tetrahedron Junior College</p>
+                <p>2022 - 2024</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <div class="contact">
+
+            <input type="text" placeholder="Your Name">
+
+            <input type="email" placeholder="Your Email">
+
+            <textarea placeholder="Your Message"></textarea>
+
+            <button onclick="sendMessage()">Send Message</button>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Surya Prakash Dash | All Rights Reserved
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function sendMessage() {
+            alert("Thank you! Your message has been submitted.");
+        }
+
+    </script>
+
+</body>
+</html>
+```
